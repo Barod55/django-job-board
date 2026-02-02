@@ -8,7 +8,7 @@ JOB_TYPE = (
   ("Part Time", "Part Time"),
 )
 def image_upload(instance, filename):
-  imagename, extension = filename.split(".")
+  imagename, extension = filename.rsplit(".",1)
   return "jobs/%s/%s.%s" % (instance.id, instance.id, extension)
 
 class Job(models.Model):
