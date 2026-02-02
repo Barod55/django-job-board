@@ -4,13 +4,6 @@
     <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_1">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>Add New Job</h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!--/ bradcam_area  -->
@@ -19,12 +12,13 @@
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <div class="apply_job_form white-bg">
-                        <h4>Post New Job</h4>
+                        <h4>Edit Profile</h4>
                         <form action="#" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            {% bootstrap_form form %}
+                            {% bootstrap_form userform %}
+                            {% bootstrap_form profileform %}
                             {% buttons %}
-                                <button class="boxed-btn3 w-100" type="submit">Post New</button>
+                                <button class="boxed-btn3 w-100" type="submit">Update Profile</button>
                             {% endbuttons %}
                         </form>
                     </div>
