@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     
     # Your apps here
     'job',
-    "bootstrap4",
+    'bootstrap4',
     'django_filters',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_REDIRECT_URL = '/jobs/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'pythondeveloper6@gmail.com'
+EMAIL_HOST_PASSWORD = 'uzii jrrn mfui aqqv'
+
