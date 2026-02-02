@@ -3,25 +3,26 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
 from .models import Job
 from .form import ApplyForm, JobForm
+from .filters import JobFilter
 
 # Number of jobs per page (change as needed)
 JOBS_PER_PAGE = 4
 
 
 def job_list(request):
-    """List all jobs with pagination.
-
-    Uses select_related to reduce queries and orders by most recently published.
-    """
-    jobs = Job.objects.select_related('owner', 'category').order_by('-published_at')
+    job_list = Job.objects.all()
+    ##filter 
+    myfilter = JobFilter(request.GET, queryset=job_list)
+    job_list = myfilter.qs
+    jobs = job_list.select_related('owner', 'category').order_by('-published_at')
     paginator = Paginator(jobs, JOBS_PER_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    context = {'jobs': page_obj}
+
+    context = {'jobs': page_obj, 'myfilter': myfilter}
     return render(request, 'job/job_list.html', context)
 
 

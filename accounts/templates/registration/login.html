@@ -19,8 +19,9 @@
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <input type="submit" class="boxed-btn3 w-100" value="login">
+    <input type="submit" href="{% url 'jobs:job_list' %}" class="boxed-btn3 w-100" value="login">
     <input type="hidden" name="next" value="{{ next }}">
+
   </form>
 
   {# Assumes you set up the password_reset view in your URLConf #}
